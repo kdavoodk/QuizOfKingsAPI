@@ -10,7 +10,7 @@ namespace QuizOfKingsAPI.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "خانه";
 
             return View();
         }
