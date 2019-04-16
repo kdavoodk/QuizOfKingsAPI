@@ -21,40 +21,43 @@ using System.Web.Http;
 
 namespace QuizOfKingsAPI.Models
 {
-   
+    public class RawJsonActionResult : IHttpActionResult
+    {
+        private readonly string _jsonString;
+
+        public RawJsonActionResult(string jsonString)
+        {
+            _jsonString = jsonString;
+        }
+
+        public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+        {
+            var content = new StringContent(_jsonString);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = new HttpResponseMessage(HttpStatusCode.OK) { Content = content };
+            return Task.FromResult(response);
+        }
+    }
+
     public static class BaseObjects
     {
         public static string ServerName = Properties.Settings.Default.server;
         public static string DataBaseName = Properties.Settings.Default.database;
-        public static string connectionSTR = "data source=" + BaseObjects.ServerName + ";initial catalog=" + BaseObjects.DataBaseName + ";user id=sa;password=1234";
+        public static string connectionSTR = "data source=" + BaseObjects.ServerName + ";initial catalog=" + BaseObjects.DataBaseName + ";user id=" + Properties.Settings.Default.user + ";password=" + Properties.Settings.Default.pass + "";
         public static string SERVICE_PASS = "kq";
         public static string SERVICE_PASS_STRONG = "h7y7%hd90!+";
 
+        public class GeneralParams
+        {
+            public string UserGUID;
+            public string ServiceKey;
+        }
 
         public class AppVersionParams
         {
             public string Username;
             public string Password;
-            public string ServicePass;
-        }
-
-        public class LoginParams
-        {
-            public string Username;
-            public string Password;
-            public string ServicePass;
-        }
-
-        public class PreInvoiceHeaderParams
-        {
-            public string Username;
-            public string Password;
-            public string ServicePass;
-            public string UserID;
-            public string CustomerID;
-            public string PreInvoiceID;
-            public string Notes;
-            public string Action;
+            public string ServiceKey;
         }
       
         public class VersionResult

@@ -8,5 +8,11 @@
     <Setting Name="database" Type="System.String" Scope="Application">
       <Value Profile="(Default)">QuizOfKings</Value>
     </Setting>
+    <Setting Name="user" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">kq</Value>
+    </Setting>
+    <Setting Name="pass" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">kq@1234</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

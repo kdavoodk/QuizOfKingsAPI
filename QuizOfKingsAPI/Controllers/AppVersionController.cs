@@ -29,7 +29,7 @@ namespace QuizOfKingsAPI.Controllers
         {
             BaseObjects.VersionResult AppVersion = new BaseObjects.VersionResult();
 
-            if (Param.ServicePass != BaseObjects.SERVICE_PASS) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(AppVersion)); }
+            if (Param.ServiceKey != BaseObjects.SERVICE_PASS) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(AppVersion)); }
 
             AppVersion.AppVersion = ConfigurationManager.AppSettings["AppVersion"].ToString();
             AppVersion.DownloadLink = ConfigurationManager.AppSettings["AppLink"].ToString();

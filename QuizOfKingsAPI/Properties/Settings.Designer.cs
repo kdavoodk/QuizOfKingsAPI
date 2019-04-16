@@ -40,5 +40,23 @@ namespace QuizOfKingsAPI.Properties {
                 return ((string)(this["database"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("kq")]
+        public string user {
+            get {
+                return ((string)(this["user"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("kq@1234")]
+        public string pass {
+            get {
+                return ((string)(this["pass"]));
+            }
+        }
     }
 }
