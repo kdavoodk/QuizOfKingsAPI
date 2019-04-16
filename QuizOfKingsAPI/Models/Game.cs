@@ -18,12 +18,12 @@ namespace QuizOfKingsAPI.Models
     public class Game
     {
         public string ID;
-        public string HostUserID;
-        public string GuestUserID;
-        public string QuestionGroupID;
+        public User HostUserID;
+        public User GuestUserID;
+        public QuestionGroup QuestionGroupID;
         public string IsStarted;
         public string IsFinished;
-        public string WinnerUserID;
+        public User WinnerUserID;
         public string StartDateTime;
 
         public void CreateGame(string hostUserID, string questionGroupID)
@@ -39,8 +39,8 @@ namespace QuizOfKingsAPI.Models
             cn.Open();
             cm.ExecuteNonQuery();
             ID = cm.Parameters["@ID"].Value.ToString();
-            HostUserID = hostUserID;
-            QuestionGroupID = questionGroupID;
+            //HostUserID = hostUserID;
+            //QuestionGroupID = questionGroupID;
             cn.Close();
             cn.Dispose();
             cm.Dispose();
