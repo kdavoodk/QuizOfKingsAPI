@@ -164,13 +164,18 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AppVersionController.cs" />
     <Compile Include="Controllers\CreateGameController.cs" />
+    <Compile Include="Controllers\GetGameStatusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JoinGameController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NextQuestionController.cs" />
     <Compile Include="Controllers\QuestionGroupController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SaveGameAnswerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\BaseObjects.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Question.cs" />
@@ -212,7 +217,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

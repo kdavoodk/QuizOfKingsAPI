@@ -20,6 +20,7 @@ namespace QuizOfKingsAPI.Models
 
     public class User
     {
+        public string ID;
         public string Mobile;
         public string Name;
         public string GUID;

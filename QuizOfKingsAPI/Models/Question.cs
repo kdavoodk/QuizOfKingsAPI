@@ -13,7 +13,7 @@ namespace QuizOfKingsAPI.Models
     {
         public string ID;
         public string Description;
-        public string OpenGames;
+        public Game OpenGames = new Game();
 
         public static List<QuestionGroup> GetList()
         {
@@ -31,7 +31,7 @@ namespace QuizOfKingsAPI.Models
                     QuestionGroup Q = new QuestionGroup();
                     Q.ID = ds.Tables[0].Rows[i]["Id"].ToString();
                     Q.Description = ds.Tables[0].Rows[i]["Description"].ToString();
-                    Q.OpenGames = ds.Tables[0].Rows[i]["OpenGames"].ToString();
+                    Q.OpenGames.ID = ds.Tables[0].Rows[i]["OpenGames"].ToString();
                     Res.Add(Q);
                 }
             }
@@ -40,5 +40,9 @@ namespace QuizOfKingsAPI.Models
     }
     public class Question
     {
+        public string ID;
+        public string Description;
+        public Answer CurrectAnswer = new Answer();
+        public QuestionGroup QuestionGroup = new QuestionGroup();
     }
 }

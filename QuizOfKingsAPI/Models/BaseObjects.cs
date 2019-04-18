@@ -47,6 +47,11 @@ namespace QuizOfKingsAPI.Models
         public static string SERVICE_PASS = "kq";
         public static string SERVICE_PASS_STRONG = "h7y7%hd90!+";
 
+
+        public class GeneralResponse
+        {
+            public string Message;
+        }
         public class GeneralParams
         {
             public string UserGUID;
