@@ -15,12 +15,10 @@ namespace QuizOfKingsAPI.Controllers
         [HttpPost]
         public IHttpActionResult Post([FromBody]GameParams Param)
         {
-            Game Result = new Game();
-            if (Param == null) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
-            if (Param.ServiceKey != BaseObjects.SERVICE_PASS) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
+            if (Param == null) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(string.Empty)); }
+            if (Param.ServiceKey != BaseObjects.SERVICE_PASS) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(string.Empty)); }
 
-            return new RawJsonActionResult(Result.GetNextQuestion(Param.GameID));
-
+            return new RawJsonActionResult(Game.NextQuestion(Param.GameID,Param.UserID));
         }
     }
 }

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Web.Http;
 using QuizOfKingsAPI.Models;
 
-
 namespace QuizOfKingsAPI.Controllers
 {
-    public class SaveGameAnswerController : ApiController
+    public class SecurityQuestionListController : ApiController
     {
         public IEnumerable<string> Get()
         {
@@ -14,18 +13,16 @@ namespace QuizOfKingsAPI.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody]SaveGameAnswerParam Param)
+        public IHttpActionResult Post([FromBody]BaseObjects.GeneralParams Param)
         {
-            Game Result = new Game();
+            User Result = new User();
+            List<SecurityQuestion> U = new List<SecurityQuestion>();
             if (Param == null) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
             if (Param.ServiceKey != BaseObjects.SERVICE_PASS) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
 
-            Result.SaveGameAnswer(Param.GameID, Param.UserID,Param.QuestionID,Param.AnswerID);
+            U = Result.SecurityQuestionList();
 
-            BaseObjects.GeneralResponse Response = new BaseObjects.GeneralResponse();
-            Response.Message = "Done";
-
-            return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Response));
+            return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(U));
 
         }
     }

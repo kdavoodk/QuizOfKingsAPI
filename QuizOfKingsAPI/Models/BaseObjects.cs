@@ -50,11 +50,12 @@ namespace QuizOfKingsAPI.Models
 
         public class GeneralResponse
         {
+            public string ResponseCode;
             public string Message;
         }
         public class GeneralParams
         {
-            public string UserGUID;
+            public string UserID;
             public string ServiceKey;
         }
 

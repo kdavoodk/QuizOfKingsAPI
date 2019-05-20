@@ -15,13 +15,13 @@ namespace QuizOfKingsAPI.Controllers
         [HttpPost]
         public IHttpActionResult Post([FromBody]BaseObjects.GeneralParams Param)
         {
-            List<QuestionGroup> Result = new List<QuestionGroup>();
+            List<QuestionGroupResult> Result = new List<QuestionGroupResult>();
             if (Param == null) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
             if (Param.ServiceKey != BaseObjects.SERVICE_PASS) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
 
-            Result = QuestionGroup.GetList();
+            //Result = QuestionGroup.ListWithGamesStatus(Param.UserID);
 
-            return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result));
+            return new RawJsonActionResult(QuestionGroup.ListWithGamesStatus(Param.UserID));
 
         }
     }

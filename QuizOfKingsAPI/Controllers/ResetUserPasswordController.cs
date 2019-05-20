@@ -5,7 +5,7 @@ using QuizOfKingsAPI.Models;
 
 namespace QuizOfKingsAPI.Controllers
 {
-    public class JoinGameController : ApiController
+    public class ResetUserPasswordController : ApiController
     {
         public IEnumerable<string> Get()
         {
@@ -13,15 +13,16 @@ namespace QuizOfKingsAPI.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody]GameParams Param)
+        public IHttpActionResult Post([FromBody]ResetPasswordParams Param)
         {
-            JoinGameResult Result = new JoinGameResult();
+            User Result = new User();
+            UserResultParams U = new UserResultParams();
             if (Param == null) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
             if (Param.ServiceKey != BaseObjects.SERVICE_PASS) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
 
-            Result=Game.JoinGame(Param.GameID, Param.UserID);
+            U = Result.ResetUserPassword(Param.Mobile,Param.SecurityQuestionAnswer,Param.NewPassword);
 
-            return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result));
+            return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(U));
 
         }
     }

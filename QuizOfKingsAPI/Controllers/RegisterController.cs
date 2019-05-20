@@ -15,14 +15,16 @@ namespace QuizOfKingsAPI.Controllers
         [HttpPost]
         public IHttpActionResult Post([FromBody]RegisterParams Param)
         {
-            Models.User Result = new Models.User();
+            User Result = new User();
+            UserResultParams U = new UserResultParams(); 
             if (Param == null) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
             if (Param.ServiceKey != BaseObjects.SERVICE_PASS) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
 
-            Result.register(Param.Mobile, Param.Password,Param.Name);
+            U = Result.register(Param.Mobile, Param.Password,Param.Name,Param.SecurityQuestionID,Param.SecurityQuestionAnswer);
 
-            return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result));
+            return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(U));
 
         }
     }
 }
+ 

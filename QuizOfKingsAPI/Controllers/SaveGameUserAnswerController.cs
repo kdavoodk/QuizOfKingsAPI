@@ -6,7 +6,7 @@ using QuizOfKingsAPI.Models;
 
 namespace QuizOfKingsAPI.Controllers
 {
-    public class GetGameStatusController : ApiController
+    public class SaveGameUserAnswerController : ApiController
     {
         public IEnumerable<string> Get()
         {
@@ -14,13 +14,13 @@ namespace QuizOfKingsAPI.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody]GameParams Param)
+        public IHttpActionResult Post([FromBody]SaveGameAnswerParam Param)
         {
-            Game Result = new Game();
+            BaseObjects.GeneralResponse Result = new BaseObjects.GeneralResponse();
             if (Param == null) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
             if (Param.ServiceKey != BaseObjects.SERVICE_PASS) { return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result)); }
 
-            Result.GetGameStatus(Param.GameID, Param.UserGUID);
+            Result=Game.SaveGameUserAnswer(Param.GameID, Param.UserID,Param.QuestionID,Param.AnswerID);
 
             return new RawJsonActionResult(Newtonsoft.Json.JsonConvert.SerializeObject(Result));
 
